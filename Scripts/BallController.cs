@@ -6,6 +6,7 @@ public partial class BallController : RigidBody2D
 	[Export] public double angle = 0;
 	[Export] public double rotationSpeed = 1.5;
 	[Export] public float radius = 100;
+	[Export] public Type type;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

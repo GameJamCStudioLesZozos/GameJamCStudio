@@ -13,6 +13,9 @@ public partial class FoeSpawner : Node
 	public Node2D player;
 
 	[Export]
+	public Node2D player;
+
+	[Export]
 	public float[] weights;
 
 	private RandomNumberGenerator rng = new();
@@ -54,6 +57,7 @@ public partial class FoeSpawner : Node
 		}
 		monster.Transform = new Transform2D(0, newPos);
 		AddChild(monster);
+		
 		return true;
 	}
 }
