@@ -1,32 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bysbk8al64h0w"]
+[gd_scene load_steps=3 format=3 uid="uid://cuqmjbj1cpjmj"]
 
 [ext_resource type="Script" path="res://Scripts/FoeSpawner.cs" id="1_63cqw"]
-[ext_resource type="Script" path="res://Scripts/CharacterMovement.cs" id="1_88d2r"]
-
-[sub_resource type="Gradient" id="Gradient_e6d1i"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5dbks"]
-gradient = SubResource("Gradient_e6d1i")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jynup"]
-radius = 19.0
-height = 64.0
+[ext_resource type="PackedScene" uid="uid://c5df4tsrpiya1" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(640, 360)
-motion_mode = 1
-script = ExtResource("1_88d2r")
-
-[node name="PlayerSprite" type="Sprite2D" parent="Player"]
-scale = Vector2(0.6, 1)
-texture = SubResource("GradientTexture2D_5dbks")
-
-[node name="PlayerCollision" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CapsuleShape2D_jynup")
 
 [node name="FoeSpawner" type="Node2D" parent="."]
 script = ExtResource("1_63cqw")
 baseTimer = 0.1
-spawnOffset = 50.0
+
+[node name="Player" parent="." instance=ExtResource("2_gvvgh")]
+position = Vector2(640, 360)

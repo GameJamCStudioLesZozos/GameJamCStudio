@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5df4tsrpiya1"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterMovement.cs" id="1_yh7mc"]
+[ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
+[ext_resource type="Texture2D" uid="uid://budqe557hdoox" path="res://Sprites/fireball.png" id="3_oauip"]
+[ext_resource type="Texture2D" uid="uid://b2ew3nljf5rw8" path="res://Sprites/iceball.png" id="4_3y34c"]
+
+[sub_resource type="Gradient" id="Gradient_e6d1i"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5dbks"]
+gradient = SubResource("Gradient_e6d1i")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jynup"]
+radius = 19.0
+height = 64.0
+
+[node name="PlayerController" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_yh7mc")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 1)
+texture = SubResource("GradientTexture2D_5dbks")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jynup")
+
+[node name="FireBall" parent="." instance=ExtResource("2_83xqg")]
+
+[node name="BallSprite" parent="FireBall" index="0"]
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("3_oauip")
+
+[node name="IceBall" parent="." instance=ExtResource("2_83xqg")]
+position = Vector2(100, 0)
+angle = 3.14
+
+[node name="BallSprite" parent="IceBall" index="0"]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_3y34c")
+
+[editable path="FireBall"]
+[editable path="IceBall"]
