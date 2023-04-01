@@ -3,11 +3,14 @@ using System;
 
 public partial class FoeSpawner : Node
 {
-	[Export]
+	[Export(PropertyHint.LocalizableString,"Timer of Spawn")]
 	public float baseTimer = 10.0f;
 	public float timer;
 	[Export]
-	public float spawnOffset = 50.0f;
+	public float spawnOffset = 0.0f;
+
+	[Export]
+	public float[] weights;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -21,16 +24,15 @@ public partial class FoeSpawner : Node
 		timer -= (float)delta;
 		if (timer < 0.0f)
 		{
-			this.Spawn();
+			Spawn();
 			timer = baseTimer;
 		}
 	}
 
 	public bool Spawn()
 	{
-		Texture2D tex = (Texture2D)GD.Load("res://Sprites/icon.svg");
-		Sprite2D monster = new Sprite2D();
-		monster.Texture = tex;
+		PackedScene prefab = ResourceLoader.Load<PackedScene>("res://Prefabs/Foe.tscn");
+		Node2D monster = (Node2D)prefab.Instantiate();
 		var rng = new RandomNumberGenerator();
 		float width = 0;
 		float height = 0;

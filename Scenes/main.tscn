@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuqmjbj1cpjmj"]
+[gd_scene load_steps=6 format=3 uid="uid://bysbk8al64h0w"]
 
 [ext_resource type="Script" path="res://Scripts/FoeSpawner.cs" id="1_63cqw"]
 [ext_resource type="Script" path="res://Scripts/CharacterMovement.cs" id="1_88d2r"]
@@ -28,3 +28,5 @@ shape = SubResource("CapsuleShape2D_jynup")
 
 [node name="FoeSpawner" type="Node2D" parent="."]
 script = ExtResource("1_63cqw")
+baseTimer = 0.1
+spawnOffset = 50.0
