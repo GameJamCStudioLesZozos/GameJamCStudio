@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3qai45cxhaur"]
+[gd_scene load_steps=4 format=3 uid="uid://mm7xfkm3ntig"]
 
 [ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_n4rkt"]
 [ext_resource type="Texture2D" uid="uid://cixxftlmy105l" path="res://Sprites/icon.svg" id="2_jsa8c"]
@@ -7,11 +7,11 @@
 radius = 63.0
 height = 126.0
 
-[node name="Foe" type="AnimatableBody2D"]
+[node name="IceFoe" type="AnimatableBody2D"]
 collision_layer = 2
 sync_to_physics = false
 script = ExtResource("1_n4rkt")
-Speed = 20.0
+Speed = 50.0
 type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

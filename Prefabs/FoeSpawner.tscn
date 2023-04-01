@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkc1v0tol1lk8"]
+
+[ext_resource type="Script" path="res://Scripts/FoeSpawner.cs" id="1_lg3v3"]
+[ext_resource type="PackedScene" uid="uid://mm7xfkm3ntig" path="res://Prefabs/IceFoe.tscn" id="2_if32j"]
+[ext_resource type="PackedScene" uid="uid://cx6gv8axxtm4y" path="res://Prefabs/FireFoe.tscn" id="3_mbv11"]
+
+[node name="FoeSpawner" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_lg3v3")
+baseTimer = 1.0
+spawnOffset = 70.0
+player = NodePath("")
+IceFoe = ExtResource("2_if32j")
+FireFoe = ExtResource("3_mbv11")

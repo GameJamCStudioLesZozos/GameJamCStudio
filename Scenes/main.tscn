@@ -1,24 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuqmjbj1cpjmj"]
 
-[ext_resource type="Script" path="res://Scripts/FoeSpawner.cs" id="1_63cqw"]
 [ext_resource type="PackedScene" uid="uid://52l1iqg8ogj6" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
+[ext_resource type="PackedScene" uid="uid://dkc1v0tol1lk8" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
 [ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="4_clknh"]
-[ext_resource type="PackedScene" uid="uid://bd5ir8nvvu7fd" path="res://Prefabs/FoesList.tscn" id="3_78ukv"]
-
 
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_vb521")]
 
-[node name="FoeSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("1_63cqw")
-baseTimer = 0.1
-spawnOffset = 50.0
+[node name="FoeSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_o4mjy")]
 player = NodePath("../Player")
-Foe = ExtResource("3_78ukv")
 
 [node name="Player" parent="." instance=ExtResource("2_gvvgh")]
+position = Vector2(640, 360)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
