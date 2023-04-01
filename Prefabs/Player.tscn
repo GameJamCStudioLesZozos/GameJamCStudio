@@ -39,5 +39,7 @@ angle = 3.14
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("4_3y34c")
 
+[node name="Camera" type="Camera2D" parent="."]
+
 [editable path="FireBall"]
 [editable path="IceBall"]

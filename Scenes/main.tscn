@@ -5,9 +5,11 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="FoeSpawner" type="Node2D" parent="."]
+[node name="FoeSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_63cqw")
 baseTimer = 0.1
+spawnOffset = 50.0
+player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_gvvgh")]
 position = Vector2(640, 360)

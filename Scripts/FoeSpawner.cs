@@ -8,10 +8,15 @@ public partial class FoeSpawner : Node
 	public float timer;
 	[Export]
 	public float spawnOffset = 0.0f;
+	
+	[Export]
+	public Node2D player;
 
 	[Export]
 	public float[] weights;
-	
+
+	private RandomNumberGenerator rng = new();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -33,21 +38,21 @@ public partial class FoeSpawner : Node
 	{
 		PackedScene prefab = ResourceLoader.Load<PackedScene>("res://Prefabs/Foe.tscn");
 		Node2D monster = (Node2D)prefab.Instantiate();
-		var rng = new RandomNumberGenerator();
-		float width = 0;
-		float height = 0;
+		var viewportSize = GetViewport().GetVisibleRect().Size;
+		var newPos = player.Position;
 		if (rng.Randf() > 0.5f)
 		{
-			
-			width = rng.Randf() * GetViewport().GetVisibleRect().Size.X + spawnOffset;
-			height = rng.Randf() > 0.5f ?-spawnOffset:GetViewport().GetVisibleRect().Size.Y + spawnOffset;
+			// Top or bottom
+			newPos.X += (rng.Randf() - 0.5f) * viewportSize.X;
+			newPos.Y += (rng.Randf() > 0.5f ? +1.0f : -1.0f) * (0.5f * viewportSize.Y + spawnOffset);
 		}
 		else
 		{
-			height = rng.Randf() * GetViewport().GetVisibleRect().Size.Y + spawnOffset;
-			width = rng.Randf() > 0.5f ?-spawnOffset:GetViewport().GetVisibleRect().Size.X + spawnOffset;
+			// Left or right
+			newPos.X += (rng.Randf() > 0.5f ? +1.0f : -1.0f) * (0.5f * viewportSize.X + spawnOffset);
+			newPos.Y += (rng.Randf() - 0.5f) * viewportSize.Y;
 		}
-		monster.Transform = new Transform2D(0, new Vector2(width, height));
+		monster.Transform = new Transform2D(0, newPos);
 		AddChild(monster);
 		return true;
 	}
