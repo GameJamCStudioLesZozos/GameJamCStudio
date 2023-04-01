@@ -7,10 +7,19 @@
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5dbks"]
 gradient = SubResource("Gradient_e6d1i")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jynup"]
+radius = 19.0
+height = 64.0
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(579, 321)
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(640, 360)
+motion_mode = 1
+script = ExtResource("1_qbyrw")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+scale = Vector2(0.6, 1)
 texture = SubResource("GradientTexture2D_5dbks")
 
 [node name="FoeSpawner" type="Node2D" parent="."]
