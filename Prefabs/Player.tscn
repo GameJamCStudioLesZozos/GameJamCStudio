@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://6jlbbpslp1cp"]
+[gd_scene load_steps=8 format=3 uid="uid://52l1iqg8ogj6"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterMovement.cs" id="1_yh7mc"]
-[ext_resource type="PackedScene" uid="uid://dlmbonmun2yeq" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
+[ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
 [ext_resource type="Texture2D" uid="uid://budqe557hdoox" path="res://Sprites/fireball.png" id="3_oauip"]
 [ext_resource type="Texture2D" uid="uid://b2ew3nljf5rw8" path="res://Sprites/iceball.png" id="4_3y34c"]
 
@@ -17,7 +17,7 @@ height = 64.0
 [node name="PlayerController" type="CharacterBody2D"]
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_yh7mc")
+script = ExtResource("1_r4ujs")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 1)
