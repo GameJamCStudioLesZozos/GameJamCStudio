@@ -28,7 +28,7 @@ public partial class FoeSpawner : Node
 
 	public bool Spawn()
 	{
-		Texture2D tex = (Texture2D)GD.Load("res://icon.svg");
+		Texture2D tex = (Texture2D)GD.Load("res://Sprites/icon.svg");
 		Sprite2D monster = new Sprite2D();
 		monster.Texture = tex;
 		var rng = new RandomNumberGenerator();
