@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Foe : CharacterBody2D
+public partial class Foe : RigidBody2D
 {
 	public int Speed = 5;
 	
@@ -10,15 +10,11 @@ public partial class Foe : CharacterBody2D
 	public void Start(Vector2 position, float direction)
 	{
 		Position = position;
-		Velocity = new Vector2(Speed, 0).Rotated(direction);
+		LinearVelocity = new Vector2(Speed, 0).Rotated(direction);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		var collision = MoveAndCollide(Velocity * (float)delta);
-		if (collision != null)
-		{
-			Velocity = Velocity.Bounce(collision.GetNormal());
-			
-		}
+		//var collision = MoveAndCollide(LinearVelocity);
+		
 	}
 }

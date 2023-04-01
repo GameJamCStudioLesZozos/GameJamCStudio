@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://6jlbbpslp1cp"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterMovement.cs" id="1_yh7mc"]
-[ext_resource type="PackedScene" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
+[ext_resource type="PackedScene" uid="uid://dlmbonmun2yeq" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
 [ext_resource type="Texture2D" uid="uid://budqe557hdoox" path="res://Sprites/fireball.png" id="3_oauip"]
 [ext_resource type="Texture2D" uid="uid://b2ew3nljf5rw8" path="res://Sprites/iceball.png" id="4_3y34c"]
 

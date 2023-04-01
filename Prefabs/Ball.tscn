@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c52bqmsv2ik7u"]
+[gd_scene load_steps=4 format=3 uid="uid://dlmbonmun2yeq"]
 
 [ext_resource type="Script" path="res://Scripts/BallController.cs" id="1_5y0o2"]
 

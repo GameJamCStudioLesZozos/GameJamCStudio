@@ -13,9 +13,6 @@ public partial class FoeSpawner : Node
 	public Node2D player;
 
 	[Export]
-	public Node2D player;
-
-	[Export]
 	public float[] weights;
 
 	private RandomNumberGenerator rng = new();

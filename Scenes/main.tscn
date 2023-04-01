@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bysbk8al64h0w"]
 
 [ext_resource type="Script" path="res://Scripts/FoeSpawner.cs" id="1_63cqw"]
-[ext_resource type="PackedScene" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
+[ext_resource type="PackedScene" uid="uid://6jlbbpslp1cp" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 
 [node name="Node2D" type="Node2D"]
 
