@@ -1,13 +1,14 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public partial class FoeSpawner : Node2D
 {
 	[Export] public float baseTimer = 10.0f;
 	[Export] public float spawnOffset = 0.0f;
 	[Export] public Node2D player;
-	[Export] public Resource[] Foes;
+	[Export] public PackedScene Foe;
 
 	private float timer;
 	private RandomNumberGenerator rng = new();
@@ -31,8 +32,20 @@ public partial class FoeSpawner : Node2D
 
 	public bool Spawn()
 	{
-		PackedScene prefab = ResourceLoader.Load<PackedScene>("res://Prefabs/Foe.tscn");
+		PackedScene prefab = Foe;
+		if (rng.Randf() > 0.5f)
+		{
+			prefab = Foe;
+		}
+		else
+		{
+			//prefab = ResourceLoader.Load<PackedScene>(Foes[1]);
+		}
 		Node2D monster = (Node2D)prefab.Instantiate();
+		int rand = (int)GD.Randi() % 2;
+		Node2D monsterToSpawn = (Node2D)monster.GetChild(rand);
+		monsterToSpawn.Reparent(this);
+		monster.QueueFree();
 		var viewportSize = GetViewport().GetVisibleRect().Size;
 		var newPos = player.Position;
 		if (rng.Randf() > 0.5f)
@@ -47,8 +60,8 @@ public partial class FoeSpawner : Node2D
 			newPos.X += (rng.Randf() > 0.5f ? +1.0f : -1.0f) * (0.5f * viewportSize.X + spawnOffset);
 			newPos.Y += (rng.Randf() - 0.5f) * viewportSize.Y;
 		}
-		monster.Transform = new Transform2D(0, newPos);
-		this.AddChild(monster);
+		monsterToSpawn.Transform = new Transform2D(0, newPos);
+		//this.AddChild(monsterToSpawn);
 		
 		return true;
 	}

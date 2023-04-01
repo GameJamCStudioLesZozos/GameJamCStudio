@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd5ir8nvvu7fd"]
+
+[ext_resource type="PackedScene" uid="uid://w7h6rubpy2ic" path="res://Prefabs/FireFoe.tscn" id="1_e4kec"]
+[ext_resource type="PackedScene" uid="uid://b3qai45cxhaur" path="res://Prefabs/IceFoe.tscn" id="2_av3o1"]
+
+[node name="FoesList" type="Node2D"]
+
+[node name="Foe" parent="." instance=ExtResource("1_e4kec")]
+
+[node name="Foe2" parent="." instance=ExtResource("2_av3o1")]

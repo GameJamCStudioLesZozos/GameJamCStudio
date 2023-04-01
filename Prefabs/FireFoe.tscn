@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://w7h6rubpy2ic"]
+
+[ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_ccl0m"]
+[ext_resource type="Texture2D" uid="uid://cixxftlmy105l" path="res://Sprites/icon.svg" id="1_lhlcm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y35ya"]
+radius = 63.0
+height = 126.0
+
+[node name="Foe" type="AnimatableBody2D"]
+collision_layer = 2
+sync_to_physics = false
+script = ExtResource("1_ccl0m")
+Speed = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y35ya")
+one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_lhlcm")

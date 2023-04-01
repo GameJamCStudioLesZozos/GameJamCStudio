@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://52l1iqg8ogj6" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
 [ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="4_clknh"]
+[ext_resource type="PackedScene" uid="uid://bd5ir8nvvu7fd" path="res://Prefabs/FoesList.tscn" id="3_78ukv"]
+
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,7 +16,7 @@ script = ExtResource("1_63cqw")
 baseTimer = 0.1
 spawnOffset = 50.0
 player = NodePath("../Player")
-Foes = Array[RigidBody2D]([null])
+Foe = ExtResource("3_78ukv")
 
 [node name="Player" parent="." instance=ExtResource("2_gvvgh")]
 

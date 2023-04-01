@@ -25,7 +25,7 @@ public partial class Foe : AnimatableBody2D
 		{
 			if (ActualCooldown < 0.0f)
 			{
-				GD.Print("Getting Stronger");
+				GD.Print("Stonks");
 				ActualCooldown = StonksCooldown;
 				//TODO
 			}
