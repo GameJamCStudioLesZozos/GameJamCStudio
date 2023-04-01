@@ -1,20 +1,15 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
-public partial class FoeSpawner : Node
+public partial class FoeSpawner : Node2D
 {
-	[Export(PropertyHint.LocalizableString,"Timer of Spawn")]
-	public float baseTimer = 10.0f;
-	public float timer;
-	[Export]
-	public float spawnOffset = 0.0f;
-	
-	[Export]
-	public Node2D player;
+	[Export] public float baseTimer = 10.0f;
+	[Export] public float spawnOffset = 0.0f;
+	[Export] public Node2D player;
+	[Export] public Resource[] Foes;
 
-	[Export]
-	public float[] weights;
-
+	private float timer;
 	private RandomNumberGenerator rng = new();
 
 	// Called when the node enters the scene tree for the first time.
@@ -53,7 +48,7 @@ public partial class FoeSpawner : Node
 			newPos.Y += (rng.Randf() - 0.5f) * viewportSize.Y;
 		}
 		monster.Transform = new Transform2D(0, newPos);
-		AddChild(monster);
+		this.AddChild(monster);
 		
 		return true;
 	}

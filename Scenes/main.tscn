@@ -13,6 +13,7 @@ script = ExtResource("1_63cqw")
 baseTimer = 0.1
 spawnOffset = 50.0
 player = NodePath("../Player")
+Foes = Array[RigidBody2D]([null])
 
 [node name="Player" parent="." instance=ExtResource("2_gvvgh")]
 position = Vector2(640, 360)

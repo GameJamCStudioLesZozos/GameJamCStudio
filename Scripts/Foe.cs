@@ -1,20 +1,29 @@
 using Godot;
 using System;
 
-public partial class Foe : RigidBody2D
+public partial class Foe : AnimatableBody2D
 {
-	public int Speed = 5;
+	[Export] public float Speed = 500;
 	
-	[Export]
-	public Type type;
-	public void Start(Vector2 position, float direction)
+	public Node2D player;
+	private Vector2 direction;
+	
+	[Export] public Type type;
+
+	public override void _Ready()
 	{
-		Position = position;
-		LinearVelocity = new Vector2(Speed, 0).Rotated(direction);
+		player = GetNode<Node2D>("/root/Node2D/Player");
+		direction = (player.Position - this.Position).Normalized();
 	}
+
+	void Hit(Vector2 position, float direction)
+	{
+		
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
-		//var collision = MoveAndCollide(LinearVelocity);
-		
+		direction = (player.Position - this.Position).Normalized();
+		MoveAndCollide(direction*Speed*(float)delta);
 	}
 }
