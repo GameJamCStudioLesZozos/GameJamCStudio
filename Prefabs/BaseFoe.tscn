@@ -47,3 +47,6 @@ one_way_collision_margin = 0.0
 
 [node name="Lifebar" parent="." node_paths=PackedStringArray("foe") instance=ExtResource("2_ec0v8")]
 foe = NodePath("..")
+
+[connection signal="HealthChanged" from="." to="Lifebar" method="OnFoeHealthChanged"]
+[connection signal="MaxHealthChanged" from="." to="Lifebar" method="OnFoeMaxHealthChanged"]
