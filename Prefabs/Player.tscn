@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
-[ext_resource type="Texture2D" uid="uid://budqe557hdoox" path="res://Sprites/fireball.png" id="3_oauip"]
-[ext_resource type="Texture2D" uid="uid://b2ew3nljf5rw8" path="res://Sprites/iceball.png" id="4_3y34c"]
+[ext_resource type="SpriteFrames" uid="uid://bo840ujxqrtlc" path="res://Animations/Fireball_SpriteFrames.tres" id="3_ybt8w"]
+[ext_resource type="SpriteFrames" uid="uid://byyl5r47fkhe1" path="res://Animations/Iceball_SpriteFrames.tres" id="4_8pg0y"]
 
 [sub_resource type="Gradient" id="Gradient_e6d1i"]
 
@@ -28,18 +28,22 @@ shape = SubResource("CapsuleShape2D_jynup")
 
 [node name="FireBall" parent="." instance=ExtResource("2_83xqg")]
 
-[node name="BallSprite" parent="FireBall" index="0"]
-scale = Vector2(0.065, 0.065)
-texture = ExtResource("3_oauip")
+[node name="AnimatedSprite2D" parent="FireBall" index="0"]
+scale = Vector2(0.49477, 0.5)
+sprite_frames = ExtResource("3_ybt8w")
+autoplay = "default"
+frame_progress = 0.843772
 
 [node name="IceBall" parent="." instance=ExtResource("2_83xqg")]
 position = Vector2(100, 0)
 angle = 3.14
 type = 1
 
-[node name="BallSprite" parent="IceBall" index="0"]
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("4_3y34c")
+[node name="AnimatedSprite2D" parent="IceBall" index="0"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("4_8pg0y")
+autoplay = "default"
+frame_progress = 0.0380203
 
 [node name="Camera" type="Camera2D" parent="."]
 
