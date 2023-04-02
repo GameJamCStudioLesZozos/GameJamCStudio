@@ -75,6 +75,7 @@ public partial class BallManager : Node2D
 		{
 			ball.QueueFree();
 		}
+		balls.Clear();
     }
 
     internal void IncreaseRadius()
