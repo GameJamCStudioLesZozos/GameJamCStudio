@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://82lf7rmnqpyw"]
+[gd_scene load_steps=6 format=3 uid="uid://dbs515agwr5ko"]
 
 [ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_yc6s3"]
+[ext_resource type="PackedScene" uid="uid://cg8v0cmmgl37x" path="res://Prefabs/FoeLifebar.tscn" id="2_lgp2y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ax8s"]
 radius = 30.0
@@ -15,6 +16,7 @@ size = Vector2(60, 60)
 [node name="BaseFoe" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
 collision_layer = 4
 collision_mask = 5
+motion_mode = 1
 script = ExtResource("1_yc6s3")
 hitbox = NodePath("HitBox")
 
@@ -41,3 +43,8 @@ collision_mask = 2
 [node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_3xsqm")
 one_way_collision_margin = 0.0
+
+[node name="Lifebar" parent="." node_paths=PackedStringArray("foe") instance=ExtResource("2_lgp2y")]
+foe = NodePath("..")
+
+[editable path="Lifebar"]

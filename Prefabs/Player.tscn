@@ -77,6 +77,9 @@ player = NodePath("..")
 [connection signal="Died" from="." to="IceBall" method="OnPlayerDied"]
 [connection signal="Died" from="." to="FireBall" method="OnPlayerDied"]
 [connection signal="HealthChanged" from="." to="Lifebar" method="OnPlayerHealthChanged"]
+[connection signal="MaxHealthChanged" from="." to="Lifebar" method="OnPlayerMaxHealthChanged"]
+[connection signal="XPChanged" from="." to="XPbar" method="OnPlayerXPChanged"]
+[connection signal="XPToNextLevelChanged" from="." to="XPbar" method="OnPlayerXPToNextLevelChanged"]
 
 [editable path="IceBall"]
 [editable path="FireBall"]
