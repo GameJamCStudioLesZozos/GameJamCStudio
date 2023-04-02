@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg5g7korc0046"]
+[gd_scene load_steps=4 format=3 uid="uid://cjwcl3lhku045"]
 
 [ext_resource type="Script" path="res://Scripts/XPbar.cs" id="1_r2stq"]
 [ext_resource type="Texture2D" uid="uid://cvovi5uoaftp4" path="res://Sprites/xpbar_bg.png" id="2_bssjq"]
