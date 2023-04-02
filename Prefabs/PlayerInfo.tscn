@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://duteqywfh05nh"]
+[gd_scene load_steps=4 format=3 uid="uid://qpkhdfvy5hv8"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerHealthLabel.cs" id="1_77xc1"]
 [ext_resource type="Script" path="res://Scripts/PlayerXPLabel.cs" id="2_ut1sa"]
@@ -19,18 +19,21 @@ offset_bottom = 40.0
 
 [node name="PlayerHealth" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
 text = "HP: 0/100"
 script = ExtResource("1_77xc1")
 
 [node name="PlayerXP" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
 text = "XP: 0/100"
 script = ExtResource("2_ut1sa")
 
 [node name="PlayerLevel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
 text = "Level: 1"
 script = ExtResource("3_vi1it")

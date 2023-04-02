@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="SpriteFrames" uid="uid://cc16i8u3drovi" path="res://Animations/Player_SpriteFrames.tres" id="2_ogeu4"]
-[ext_resource type="PackedScene" uid="uid://q8rfeflml2nw" path="res://Prefabs/BallManager.tscn" id="3_7p7tr"]
-[ext_resource type="PackedScene" uid="uid://nb0jgiog7sb7" path="res://Prefabs/PowerUpManager.tscn" id="4_he58j"]
+[ext_resource type="PackedScene" path="res://Prefabs/BallManager.tscn" id="3_7p7tr"]
+[ext_resource type="PackedScene" path="res://Prefabs/PowerUpManager.tscn" id="4_he58j"]
 [ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
 [ext_resource type="PackedScene" uid="uid://cjwcl3lhku045" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
 [ext_resource type="AudioStream" uid="uid://fjo8nyartufw" path="res://Audio/roblox-death-sound-effect.mp3" id="6_rauxo"]
