@@ -22,6 +22,8 @@ public partial class PlayerController : CharacterBody2D
     [Signal]
     public delegate void DiedEventHandler();
 
+    private bool IsDead => Health <= 0;
+
     public override void _Ready()
     {
         Health = MaxHealth;
@@ -46,6 +48,9 @@ public partial class PlayerController : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (IsDead)
+            return;
+
         GetInput();
         MoveAndSlide();
     }
