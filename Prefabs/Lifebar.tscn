@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dry6axi4vajsp"]
+[gd_scene load_steps=4 format=3 uid="uid://dcn1o3q568vr7"]
 
 [ext_resource type="Script" path="res://Scripts/Lifebar.cs" id="1_hpq0b"]
 [ext_resource type="Texture2D" uid="uid://bipe8hxewb4pf" path="res://Sprites/lifebar_bg.png" id="2_vu7nb"]
