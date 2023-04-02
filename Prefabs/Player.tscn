@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://52l1iqg8ogj6"]
+[gd_scene load_steps=9 format=3 uid="uid://drsmxwpq5c5l5"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
@@ -25,8 +25,7 @@ animComponent = NodePath("Sprite")
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("2_ogeu4")
 animation = &"Idle"
-frame = 3
-frame_progress = 0.467998
+autoplay = "Idle"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jynup")

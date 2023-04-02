@@ -1,6 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://cc16i8u3drovi"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://cc16i8u3drovi"]
 
 [ext_resource type="Texture2D" uid="uid://cedri3v4vbod4" path="res://Sprites/character_spritesheet.png" id="1_nduu5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkg5a"]
+atlas = ExtResource("1_nduu5")
+region = Rect2(631, 467, 68, 113)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2ve4"]
 atlas = ExtResource("1_nduu5")
@@ -48,6 +52,14 @@ region = Rect2(880, 145, 76, 113)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkg5a")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y2ve4")

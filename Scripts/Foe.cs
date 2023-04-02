@@ -152,7 +152,7 @@ public partial class Foe : CharacterBody2D
 			var parent = hurtbox.GetParent();
 			if (parent != null && parent.HasMethod("TakeDamage"))
 			{
-				parent.Call("TakeDamage", Damage);
+				parent.Call("TakeDamage", Damage, Position);
 			}
 		}
 	}

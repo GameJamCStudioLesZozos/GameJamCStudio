@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuqmjbj1cpjmj"]
+[gd_scene load_steps=6 format=3 uid="uid://cuqmjbj1cpjmj"]
 
-[ext_resource type="PackedScene" uid="uid://52l1iqg8ogj6" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
+[ext_resource type="PackedScene" uid="uid://drsmxwpq5c5l5" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://cmjd3mlcvor6m" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
-[ext_resource type="PackedScene" uid="uid://dcn1o3q568vr7" path="res://Prefabs/Lifebar.tscn" id="4_clknh"]
-[ext_resource type="PackedScene" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
+[ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="4_clknh"]
+[ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
 
 [node name="Node2D" type="Node2D"]
 
