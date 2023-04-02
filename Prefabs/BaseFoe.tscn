@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxa7tmcmnhypr"]
+
+[ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_yc6s3"]
+[ext_resource type="Texture2D" uid="uid://cixxftlmy105l" path="res://Sprites/icon.svg" id="2_kn36y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ax8s"]
+radius = 60.0
+height = 120.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4b5x"]
+size = Vector2(150, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xsqm"]
+size = Vector2(120, 120)
+
+[node name="BaseFoe" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_yc6s3")
+hitbox = NodePath("HitBox")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_kn36y")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3ax8s")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_n4b5x")
+one_way_collision_margin = 0.0
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_3xsqm")
+one_way_collision_margin = 0.0
