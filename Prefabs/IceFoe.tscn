@@ -1,22 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://mm7xfkm3ntig"]
 
 [ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_n4rkt"]
-[ext_resource type="Texture2D" uid="uid://cixxftlmy105l" path="res://Sprites/icon.svg" id="2_jsa8c"]
+[ext_resource type="SpriteFrames" uid="uid://c1j70de28c2gj" path="res://Animations/IceFoe_SpriteFrames.tres" id="2_0m8pd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y35ya"]
-radius = 63.0
-height = 126.0
+radius = 35.14
+height = 80.42
 
 [node name="IceFoe" type="AnimatableBody2D"]
 collision_layer = 2
 sync_to_physics = false
 script = ExtResource("1_n4rkt")
+Speed = 50.0
 type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_y35ya")
 one_way_collision_margin = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-texture = ExtResource("2_jsa8c")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_0m8pd")
+autoplay = "default"
+frame = 2
+frame_progress = 0.29583
