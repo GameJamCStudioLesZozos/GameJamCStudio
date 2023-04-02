@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcn1o3q568vr7"]
+[gd_scene load_steps=4 format=3 uid="uid://dry6axi4vajsp"]
 
 [ext_resource type="Script" path="res://Scripts/Lifebar.cs" id="1_hpq0b"]
 [ext_resource type="Texture2D" uid="uid://bipe8hxewb4pf" path="res://Sprites/lifebar_bg.png" id="2_vu7nb"]
@@ -12,8 +12,8 @@ lifebarProgress = NodePath("LifebarProgress")
 
 [node name="LifebarProgress" type="TextureProgressBar" parent="."]
 layout_mode = 2
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 396.0
+offset_bottom = 53.0
 value = 100.0
 texture_under = ExtResource("2_vu7nb")
 texture_progress = ExtResource("3_84tqm")

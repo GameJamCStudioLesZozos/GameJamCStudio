@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg5g7korc0046"]
+
+[ext_resource type="Script" path="res://Scripts/XPbar.cs" id="1_r2stq"]
+[ext_resource type="Texture2D" uid="uid://cvovi5uoaftp4" path="res://Sprites/xpbar_bg.png" id="2_bssjq"]
+[ext_resource type="Texture2D" uid="uid://br0xx6ww7cspq" path="res://Sprites/xpbar_fill.png" id="3_oom2r"]
+
+[node name="XPbar" type="Control" node_paths=PackedStringArray("xpBarProgress")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r2stq")
+xpBarProgress = NodePath("XPbarProgress")
+
+[node name="XPbarProgress" type="TextureProgressBar" parent="."]
+layout_mode = 2
+offset_right = 396.0
+offset_bottom = 53.0
+scale = Vector2(1, 0.5)
+value = 100.0
+texture_under = ExtResource("2_bssjq")
+texture_progress = ExtResource("3_oom2r")

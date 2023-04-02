@@ -14,14 +14,15 @@ public partial class Lifebar : Control
 		lifebarProgress.Value = player.Health;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
 	public void OnPlayerHealthChanged(int newHealth)
 	{
-		GD.Print($"Updating Health to {newHealth}");
+		// GD.Print($"Updating Health to {newHealth}");
 		lifebarProgress.Value = newHealth;
+	}
+
+	public void OnPlayerMaxHealthChanged(int newMaxHealth)
+	{
+		// GD.Print($"Updating MaxHealth to {newMaxHealth}");
+		lifebarProgress.MaxValue = newMaxHealth;
 	}
 }
