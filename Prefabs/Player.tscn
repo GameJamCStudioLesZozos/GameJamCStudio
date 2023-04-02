@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://52l1iqg8ogj6"]
+[gd_scene load_steps=9 format=3 uid="uid://52l1iqg8ogj6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
@@ -11,22 +11,31 @@
 gradient = SubResource("Gradient_e6d1i")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jynup"]
-radius = 19.0
-height = 64.0
+radius = 15.0
+height = 55.0
 
-[node name="PlayerController" type="CharacterBody2D"]
-collision_mask = 0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icb3i"]
+radius = 20.0
+height = 65.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_r4ujs")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 1)
 texture = SubResource("GradientTexture2D_5dbks")
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+[node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jynup")
 
-[node name="FireBall" parent="." instance=ExtResource("2_83xqg")]
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_icb3i")
 
 [node name="AnimatedSprite2D" parent="FireBall" index="0"]
 scale = Vector2(0.49477, 0.5)
@@ -35,8 +44,6 @@ autoplay = "default"
 frame_progress = 0.843772
 
 [node name="IceBall" parent="." instance=ExtResource("2_83xqg")]
-position = Vector2(100, 0)
-angle = 3.14
 type = 1
 
 [node name="AnimatedSprite2D" parent="IceBall" index="0"]
@@ -45,10 +52,15 @@ sprite_frames = ExtResource("4_8pg0y")
 autoplay = "default"
 frame_progress = 0.0380203
 
+[node name="FireBall" parent="." instance=ExtResource("2_83xqg")]
+position = Vector2(100, 0)
+angle = 3.14
+
+[node name="Sprite" parent="FireBall" index="0"]
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_oauip")
+
 [node name="Camera" type="Camera2D" parent="."]
 
-[connection signal="Died" from="." to="FireBall" method="OnPlayerDied"]
-[connection signal="Died" from="." to="IceBall" method="OnPlayerDied"]
-
-[editable path="FireBall"]
 [editable path="IceBall"]
+[editable path="FireBall"]
