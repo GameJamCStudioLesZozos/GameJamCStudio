@@ -62,6 +62,10 @@ public partial class PlayerController : CharacterBody2D
     [Export] private double TakeDamageCooldown = 0.25;
     private double CurrentInvulnerabilityDuration = 0.0;
     private double CurrentTakeDamageDuration = 0.0;
+    
+    [Export] private AudioStreamPlayer DamageSound;
+    [Export] private AudioStreamPlayer DeathSound;
+    [Export] private AudioStreamPlayer Music;
 
     private bool IsInvincible => CurrentInvulnerabilityDuration > 0;
     private bool IsBeingHit => CurrentTakeDamageDuration > 0;
@@ -172,6 +176,7 @@ public partial class PlayerController : CharacterBody2D
         CurrentTakeDamageDuration = TakeDamageCooldown;
         HitDirection = (Position - enemyPosition).Normalized();
         PlayHit();
+        DamageSound.Play(0.36f);
         
         Health = Math.Max(Health - amount, 0);
         if (Health == 0)
@@ -208,7 +213,13 @@ public partial class PlayerController : CharacterBody2D
     private void PlayIdle() { PlayAnim("Idle"); }
     private void PlayRunning(){ PlayAnim("Running"); }
     private void PlayHit(){ PlayAnim("Hit"); }
-    private void PlayDie(){ PlayAnim("Die"); }
+
+    private void PlayDie()
+    {
+        PlayAnim("Die"); 
+        Music.Stop();
+        DeathSound.Play();
+    }
 
     private void PlayAnim(string name)
     {

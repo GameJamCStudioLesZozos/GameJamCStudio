@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drsmxwpq5c5l5" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://cmjd3mlcvor6m" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
-[ext_resource type="PackedScene" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
+[ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
 [ext_resource type="PackedScene" uid="uid://duteqywfh05nh" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
 [ext_resource type="AudioStream" uid="uid://bqa4lu8ig8p6y" path="res://Audio/Samurai-Sake-Showdown.mp3" id="6_p6s60"]
 
@@ -15,8 +15,9 @@ position = Vector2(1, 0)
 [node name="FoeSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_o4mjy")]
 player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_gvvgh")]
+[node name="Player" parent="." node_paths=PackedStringArray("Music") instance=ExtResource("2_gvvgh")]
 position = Vector2(640, 360)
+Music = NodePath("../GUI/Music")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
@@ -48,7 +49,7 @@ player = NodePath("../../../../Player")
 [node name="PlayerLevel" parent="GUI/PlayerInfo/VBoxContainer" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../../Player")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GUI"]
+[node name="Music" type="AudioStreamPlayer" parent="GUI"]
 stream = ExtResource("6_p6s60")
 volume_db = -12.0
 autoplay = true
