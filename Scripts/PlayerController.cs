@@ -89,6 +89,9 @@ public partial class PlayerController : CharacterBody2D
     {
         base._Process(delta);
 
+        if (IsDead)
+            return;
+
         CurrentInvulnerabilityDuration -= delta;
         if (CurrentInvulnerabilityDuration <= 0.0)
         {
@@ -160,6 +163,7 @@ public partial class PlayerController : CharacterBody2D
         if (Health == 0)
         {
             EmitSignal(SignalName.Died);
+            PlayDie();
         }
     }
 
@@ -185,6 +189,7 @@ public partial class PlayerController : CharacterBody2D
     private void PlayIdle() { PlayAnim("Idle"); }
     private void PlayRunning(){ PlayAnim("Running"); }
     private void PlayHit(){ PlayAnim("Hit"); }
+    private void PlayDie(){ PlayAnim("Die"); }
 
     private void PlayAnim(string name)
     {

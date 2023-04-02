@@ -6,7 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bo840ujxqrtlc" path="res://Animations/Fireball_SpriteFrames.tres" id="3_ybt8w"]
 [ext_resource type="SpriteFrames" uid="uid://byyl5r47fkhe1" path="res://Animations/Iceball_SpriteFrames.tres" id="4_8pg0y"]
 [ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
-[ext_resource type="PackedScene" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
+[ext_resource type="PackedScene" uid="uid://cjwcl3lhku045" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jynup"]
 radius = 15.0
@@ -25,8 +25,9 @@ animComponent = NodePath("Sprite")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("2_ogeu4")
-animation = &"Idle"
+animation = &"Die"
 autoplay = "Idle"
+frame_progress = 0.197374
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jynup")
