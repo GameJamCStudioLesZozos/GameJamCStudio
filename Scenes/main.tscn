@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(1, 0)
 
 [node name="Terrain" parent="." instance=ExtResource("3_vb521")]
 
