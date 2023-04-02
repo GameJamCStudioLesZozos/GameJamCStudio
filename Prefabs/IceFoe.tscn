@@ -1,26 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://mm7xfkm3ntig"]
+[gd_scene load_steps=3 format=3 uid="uid://db7dj08fwxs7q"]
 
-[ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_n4rkt"]
-[ext_resource type="SpriteFrames" uid="uid://c1j70de28c2gj" path="res://Animations/IceFoe_SpriteFrames.tres" id="2_0m8pd"]
+[ext_resource type="PackedScene" uid="uid://dbs515agwr5ko" path="res://Prefabs/BaseFoe.tscn" id="1_iv28n"]
+[ext_resource type="SpriteFrames" uid="uid://c1j70de28c2gj" path="res://Animations/IceFoe_SpriteFrames.tres" id="2_lr38w"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y35ya"]
-radius = 35.14
-height = 80.42
-
-[node name="IceFoe" type="AnimatableBody2D"]
-collision_layer = 2
-sync_to_physics = false
-script = ExtResource("1_n4rkt")
-Speed = 50.0
+[node name="IceFoe" instance=ExtResource("1_iv28n")]
 type = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_y35ya")
-one_way_collision_margin = 0.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_0m8pd")
-autoplay = "default"
-frame = 2
-frame_progress = 0.29583
+[node name="Sprite" parent="." index="0"]
+sprite_frames = ExtResource("2_lr38w")

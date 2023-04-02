@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://db7dj08fwxs7q"]
-
-[ext_resource type="PackedScene" uid="uid://dbs515agwr5ko" path="res://Prefabs/BaseFoe.tscn" id="1_iv28n"]
-
-[node name="IceFoe" instance=ExtResource("1_iv28n")]
-type = 1
-
-[node name="Sprite" parent="." index="0"]
-modulate = Color(0, 1, 1, 1)

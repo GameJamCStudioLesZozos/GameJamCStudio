@@ -37,12 +37,6 @@ collision_mask = 0
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_icb3i")
 
-[node name="AnimatedSprite2D" parent="FireBall" index="0"]
-scale = Vector2(0.49477, 0.5)
-sprite_frames = ExtResource("3_ybt8w")
-autoplay = "default"
-frame_progress = 0.843772
-
 [node name="IceBall" parent="." instance=ExtResource("2_83xqg")]
 type = 1
 
@@ -50,15 +44,15 @@ type = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("4_8pg0y")
 autoplay = "default"
-frame_progress = 0.0380203
 
 [node name="FireBall" parent="." instance=ExtResource("2_83xqg")]
 position = Vector2(100, 0)
 angle = 3.14
 
-[node name="Sprite" parent="FireBall" index="0"]
-scale = Vector2(0.06, 0.06)
-texture = ExtResource("3_oauip")
+[node name="AnimatedSprite2D" parent="FireBall" index="0"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("3_ybt8w")
+autoplay = "default"
 
 [node name="Camera" type="Camera2D" parent="."]
 
