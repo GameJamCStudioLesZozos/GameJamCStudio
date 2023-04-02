@@ -3,10 +3,16 @@ using System;
 
 public partial class Foe : AnimatableBody2D
 {
-	[Export] public float Speed = 500;
-	[Export] public double StonksCooldown = 0.5f;
+	[Export] public float Speed = 0.0f;
+	[Export] public float TopSpeed = 100.0f;
+	[Export] public float Acceleration = 50.0f;
+	[Export] public float InitialSpeed = 50.0f;
+	[Export] public float RecoilSpeed = -50.0f;
+	[Export] public float AbsorbSpeed = -10.0f;
+
+	[Export] public double StonksCooldown = 1.5f;
 	public double CurrentStonksCooldown = 0.0f;
-	[Export] public double DamageCooldown = 0.5f;
+	[Export] public double DamageCooldown = 1.0f;
 	public double CurrentDamageCooldown = 0.0f;
 	
 	[Export] public int Health = 10;
@@ -34,6 +40,7 @@ public partial class Foe : AnimatableBody2D
 		direction = (player.Position - this.Position).Normalized();
 		CurrentStonksCooldown = 0.0f;
 		Health = MaxHealth;
+		Speed = InitialSpeed;
 	}
 
 	void Hit(Type typeOfBall, int ballPower)
@@ -80,6 +87,7 @@ public partial class Foe : AnimatableBody2D
 		EmitSignal(SignalName.HealthChanged, Health);
 		
 		Scale *= SizeScaling;
+		Speed = AbsorbSpeed;
     }
 	
     private void TakeDamage(int ballPower)
@@ -108,17 +116,29 @@ public partial class Foe : AnimatableBody2D
 			EmitSignal(SignalName.Died);
 			QueueFree();
 		}
+		else
+		{
+			Speed = RecoilSpeed;
+		}
     }
 
 
     public override void _Process(double delta)
 	{
 		CurrentStonksCooldown -= delta;
+		if (CurrentStonksCooldown <= 0.0f)
+			CurrentStonksCooldown = 0.0f;
+		CurrentDamageCooldown -= delta;
+		if (CurrentDamageCooldown <= 0.0f)
+			CurrentDamageCooldown = 0.0f;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		direction = (player.Position - this.Position).Normalized();
+		Speed += Acceleration * (float)delta;
+		if (Speed >= TopSpeed)
+			Speed = TopSpeed; 
 		KinematicCollision2D collision = MoveAndCollide(direction*Speed*(float)delta);
 		
 		if (collision != null)
