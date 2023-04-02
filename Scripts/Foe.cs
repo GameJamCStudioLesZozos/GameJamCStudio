@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Foe : AnimatableBody2D
+public partial class Foe : CharacterBody2D
 {
 	[Export] public float Speed = 0.0f;
 	[Export] public float TopSpeed = 100.0f;
@@ -27,6 +27,7 @@ public partial class Foe : AnimatableBody2D
 
 	public Node2D player;
 	private Vector2 direction;
+	[Export] private Area2D hitbox;
 	
 	[Export] public Type type;
 
@@ -122,7 +123,6 @@ public partial class Foe : AnimatableBody2D
 		}
     }
 
-
     public override void _Process(double delta)
 	{
 		CurrentStonksCooldown -= delta;
@@ -138,14 +138,21 @@ public partial class Foe : AnimatableBody2D
 		direction = (player.Position - this.Position).Normalized();
 		Speed += Acceleration * (float)delta;
 		if (Speed >= TopSpeed)
-			Speed = TopSpeed; 
-		KinematicCollision2D collision = MoveAndCollide(direction*Speed*(float)delta);
-		
-		if (collision != null)
+			Speed = TopSpeed;
+		Velocity = direction*Speed;
+		MoveAndSlide();
+		CheckHitBoxCollisions();
+	}
+
+	private void CheckHitBoxCollisions()
+	{
+		var hurtboxes = hitbox.GetOverlappingAreas();
+		foreach (var hurtbox in hurtboxes)
 		{
-			if (collision.GetCollider().HasMethod("TakeDamage"))
+			var parent = hurtbox.GetParent();
+			if (parent != null && parent.HasMethod("TakeDamage"))
 			{
-				collision.GetCollider().Call("TakeDamage", Damage);
+				parent.Call("TakeDamage", Damage);
 			}
 		}
 	}
