@@ -4,12 +4,14 @@
 [ext_resource type="Script" path="res://Scripts/IntroScript.cs" id="1_w5c3p"]
 [ext_resource type="Texture2D" uid="uid://dadjosdnwvmsx" path="res://Sprites/game.png" id="2_wlqip"]
 
-[node name="Intro" type="Node2D"]
+[node name="Intro" type="Node2D" node_paths=PackedStringArray("howToPlayParent")]
 script = ExtResource("1_w5c3p")
+howToPlayParent = NodePath("GUI/InstructionsPanel")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="GUI"]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,7 +20,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="GUI"]
-z_index = 1
 offset_right = 720.0
 offset_bottom = 720.0
 texture = ExtResource("1_qpojy")
@@ -26,6 +27,7 @@ expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="GUI"]
 modulate = Color(0.501961, 0.501961, 0.501961, 0.501961)
+z_index = -1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -44,10 +46,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -55.0
-offset_right = -130.0
-offset_bottom = 95.0
+offset_left = -479.0
+offset_top = -164.0
+offset_right = -69.0
+offset_bottom = 161.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -56,12 +58,78 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="GUI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Play"
+text = "🎮 Play"
+
+[node name="HowToPlayButton" type="Button" parent="GUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "  📝 Instructions  "
 
 [node name="QuitButton" type="Button" parent="GUI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Quit"
+text = "😢 Quit"
+
+[node name="InstructionsPanel" type="Panel" parent="GUI"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.481
+anchor_right = 0.521
+anchor_bottom = 0.481
+offset_left = -519.88
+offset_top = -200.32
+offset_right = 505.12
+offset_bottom = 213.68
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GUI/InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0862745, 0.0862745, 0.870588)
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InstructionsText" type="RichTextLabel" parent="GUI/InstructionsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "⌨️ Move with Arrows or ZQSD
+
+Destroy 🔥 enemies with 🧊 ball (and vice-versa)
+
+Get the highest score by raising your XP and lvl!"
+fit_content = true
+scroll_active = false
+
+[node name="CloseButton" type="Button" parent="GUI/InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_bottom = 92.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "X"
 
 [connection signal="button_up" from="GUI/VBoxContainer/PlayButton" to="." method="OnPlayButtonUp"]
+[connection signal="button_up" from="GUI/VBoxContainer/HowToPlayButton" to="." method="OnShowHowToPlayButtonUp"]
 [connection signal="button_up" from="GUI/VBoxContainer/QuitButton" to="." method="OnQuitButtonUp"]
+[connection signal="button_up" from="GUI/InstructionsPanel/CloseButton" to="." method="OnHideHowToPlayButtonUp"]
