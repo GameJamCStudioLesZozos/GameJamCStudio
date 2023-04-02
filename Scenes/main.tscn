@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuqmjbj1cpjmj"]
+[gd_scene load_steps=8 format=3 uid="uid://cuqmjbj1cpjmj"]
 
 [ext_resource type="PackedScene" uid="uid://drsmxwpq5c5l5" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://cmjd3mlcvor6m" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
 [ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
-[ext_resource type="PackedScene" uid="uid://duteqywfh05nh" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
+[ext_resource type="PackedScene" uid="uid://qpkhdfvy5hv8" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
 [ext_resource type="AudioStream" uid="uid://bqa4lu8ig8p6y" path="res://Audio/Samurai-Sake-Showdown.mp3" id="6_p6s60"]
+[ext_resource type="Script" path="res://Scripts/ShakeCamera2D.cs" id="7_64b13"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(1, 0)
@@ -54,10 +55,15 @@ stream = ExtResource("6_p6s60")
 volume_db = -12.0
 autoplay = true
 
+[node name="ShakeCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("7_64b13")
+target = NodePath("../Player")
+
 [connection signal="Died" from="Player" to="GUI/GameOverUI" method="OnPlayerDied"]
 [connection signal="HealthChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerHealth" method="OnPlayerHealthChanged"]
 [connection signal="LevelChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerLevel" method="OnPlayerLevelChanged"]
 [connection signal="MaxHealthChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerHealth" method="OnPlayerMaxHealthChanged"]
+[connection signal="PlayerHit" from="Player" to="ShakeCamera2D" method="OnPlayerHit"]
 [connection signal="XPChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerXP" method="OnPlayerXPChanged"]
 [connection signal="XPToNextLevelChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerXP" method="OnPlayerXPToNextLevelChanged"]
 

@@ -84,6 +84,7 @@ public partial class PlayerController : CharacterBody2D
 
     [Signal] public delegate void HealthChangedEventHandler(int newHealth);
     [Signal] public delegate void MaxHealthChangedEventHandler(int newMaxHealth);
+    [Signal] public delegate void PlayerHitEventHandler();
     [Signal] public delegate void DiedEventHandler();
     [Signal] public delegate void XPChangedEventHandler(int newXP);
     [Signal] public delegate void XPToNextLevelChangedEventHandler(int newXPToNextLevel);
@@ -177,6 +178,7 @@ public partial class PlayerController : CharacterBody2D
         HitDirection = (Position - enemyPosition).Normalized();
         PlayHit();
         DamageSound.Play(0.36f);
+        EmitSignal(SignalName.PlayerHit);
         
         Health = Math.Max(Health - amount, 0);
         if (Health == 0)

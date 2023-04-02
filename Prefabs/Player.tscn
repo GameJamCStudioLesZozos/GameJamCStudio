@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="SpriteFrames" uid="uid://cc16i8u3drovi" path="res://Animations/Player_SpriteFrames.tres" id="2_ogeu4"]
-[ext_resource type="PackedScene" uid="uid://q8rfeflml2nw" path="res://Prefabs/BallManager.tscn" id="3_7p7tr"]
-[ext_resource type="PackedScene" uid="uid://dcn1o3q568vr7" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
-[ext_resource type="PackedScene" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
+[ext_resource type="PackedScene" path="res://Prefabs/BallManager.tscn" id="3_7p7tr"]
+[ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
+[ext_resource type="PackedScene" uid="uid://cjwcl3lhku045" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
 [ext_resource type="AudioStream" uid="uid://fjo8nyartufw" path="res://Audio/roblox-death-sound-effect.mp3" id="6_rauxo"]
 [ext_resource type="AudioStream" uid="uid://qxcqg213eyp0" path="res://Audio/tf_nemesis.mp3" id="7_qgr46"]
 
@@ -44,8 +44,6 @@ collision_mask = 0
 
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_icb3i")
-
-[node name="Camera" type="Camera2D" parent="."]
 
 [node name="Lifebar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_qcvfm")]
 offset_left = -60.0
