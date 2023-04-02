@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d21fwbitsmiue"]
+[gd_scene load_steps=2 format=3 uid="uid://fr56qpgdkx3y"]
 
-[ext_resource type="Texture2D" uid="uid://c8xdb2uknbjxw" path="res://Sprites/grass.png" id="1_a034t"]
+[ext_resource type="Texture2D" uid="uid://frwfeg5c6g2h" path="res://Sprites/grass.png" id="1_a034t"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
