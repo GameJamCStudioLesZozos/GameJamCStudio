@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuqmjbj1cpjmj"]
+[gd_scene load_steps=7 format=3 uid="uid://cuqmjbj1cpjmj"]
 
 [ext_resource type="PackedScene" uid="uid://drsmxwpq5c5l5" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://cmjd3mlcvor6m" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
 [ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
-[ext_resource type="PackedScene" uid="uid://qpkhdfvy5hv8" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
+[ext_resource type="PackedScene" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
+[ext_resource type="AudioStream" uid="uid://bqa4lu8ig8p6y" path="res://Audio/Samurai-Sake-Showdown.mp3" id="6_p6s60"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(1, 0)
@@ -46,6 +47,10 @@ player = NodePath("../../../../Player")
 
 [node name="PlayerLevel" parent="GUI/PlayerInfo/VBoxContainer" index="2" node_paths=PackedStringArray("player")]
 player = NodePath("../../../../Player")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GUI"]
+stream = ExtResource("6_p6s60")
+autoplay = true
 
 [connection signal="Died" from="Player" to="GUI/GameOverUI" method="OnPlayerDied"]
 [connection signal="HealthChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerHealth" method="OnPlayerHealthChanged"]

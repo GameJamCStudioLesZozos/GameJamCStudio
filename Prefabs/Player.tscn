@@ -5,8 +5,8 @@
 [ext_resource type="SpriteFrames" uid="uid://cc16i8u3drovi" path="res://Animations/Player_SpriteFrames.tres" id="2_ogeu4"]
 [ext_resource type="SpriteFrames" uid="uid://bo840ujxqrtlc" path="res://Animations/Fireball_SpriteFrames.tres" id="3_ybt8w"]
 [ext_resource type="SpriteFrames" uid="uid://byyl5r47fkhe1" path="res://Animations/Iceball_SpriteFrames.tres" id="4_8pg0y"]
-[ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
-[ext_resource type="PackedScene" uid="uid://cjwcl3lhku045" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
+[ext_resource type="PackedScene" uid="uid://dcn1o3q568vr7" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
+[ext_resource type="PackedScene" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jynup"]
 radius = 15.0

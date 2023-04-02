@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbs515agwr5ko"]
 
 [ext_resource type="Script" path="res://Scripts/Foe.cs" id="1_yc6s3"]
-[ext_resource type="PackedScene" path="res://Prefabs/FoeLifebar.tscn" id="2_ec0v8"]
+[ext_resource type="PackedScene" uid="uid://cg8v0cmmgl37x" path="res://Prefabs/FoeLifebar.tscn" id="2_ec0v8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ax8s"]
 radius = 30.0
