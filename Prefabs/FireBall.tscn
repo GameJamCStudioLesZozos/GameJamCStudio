@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3te81330821t"]
+
+[ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="1_dfxmr"]
+[ext_resource type="SpriteFrames" uid="uid://bo840ujxqrtlc" path="res://Animations/Fireball_SpriteFrames.tres" id="2_84fyu"]
+
+[node name="FireBall" instance=ExtResource("1_dfxmr")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_84fyu")
+autoplay = "default"

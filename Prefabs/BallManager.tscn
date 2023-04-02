@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://q8rfeflml2nw"]
+
+[ext_resource type="Script" path="res://Scripts/BallManager.cs" id="1_mhywm"]
+[ext_resource type="PackedScene" uid="uid://uccf76m1ty44" path="res://Prefabs/IceBall.tscn" id="2_y8t13"]
+[ext_resource type="PackedScene" uid="uid://c3te81330821t" path="res://Prefabs/FireBall.tscn" id="3_46ox7"]
+
+[node name="BallManager" type="Node2D"]
+script = ExtResource("1_mhywm")
+IceBall = ExtResource("2_y8t13")
+FireBall = ExtResource("3_46ox7")
