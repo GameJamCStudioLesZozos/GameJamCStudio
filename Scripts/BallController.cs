@@ -7,6 +7,7 @@ public partial class BallController : RigidBody2D
 	[Export] public double rotationSpeed = 1.5;
 	[Export] public float radius = 100;
 	[Export] public Type type;
+	[Export] public int damage = 10;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,7 +27,7 @@ public partial class BallController : RigidBody2D
 		{
 			if (collision.GetCollider().HasMethod("Hit"))
 			{
-				collision.GetCollider().Call("Hit",Variant.From(type));
+				collision.GetCollider().Call("Hit", Variant.From(type), damage);
 			}
 		}
 	}
