@@ -42,7 +42,7 @@ public partial class PlayerController : CharacterBody2D
         set
         {
             level = value;
-            EmitSignal(SignalName.LevelChanged, xp);
+            EmitSignal(SignalName.LevelChanged, level);
         }
     }
     [Export] private int xpToNextLevel = 100;
