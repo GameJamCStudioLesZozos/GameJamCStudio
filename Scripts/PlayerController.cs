@@ -197,6 +197,11 @@ public partial class PlayerController : CharacterBody2D
         }
     }
 
+    public int GetScore()
+    {
+        return Level * 100 + (int)((XP / (float)XPToNextLevel) * 100);
+    }
+
     private void LevelUp()
     {
         ++Level;

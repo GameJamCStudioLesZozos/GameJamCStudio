@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/GameOverUI.cs" id="1_77bkm"]
 
-[node name="GameOverUI" type="Control" node_paths=PackedStringArray("content")]
+[node name="GameOverUI" type="Control" node_paths=PackedStringArray("content", "scoreText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_77bkm")
 content = NodePath("Control")
+scoreText = NodePath("Control/PanelContainer/MarginContainer/VBoxContainer/ScoreText")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -75,6 +76,12 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
+
+[node name="ScoreText" type="RichTextLabel" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Score : {}"
+fit_content = true
 
 [node name="RestartButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

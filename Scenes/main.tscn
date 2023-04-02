@@ -22,12 +22,13 @@ Music = NodePath("../GUI/Music")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="GameOverUI" parent="GUI" instance=ExtResource("4_d8rnf")]
+[node name="GameOverUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_d8rnf")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+player = NodePath("../../Player")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerInfo" parent="GUI" instance=ExtResource("5_2835u")]
