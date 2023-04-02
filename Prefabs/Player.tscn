@@ -35,10 +35,6 @@ autoplay = "Idle"
 frame_progress = 0.197374
 
 [node name="BallManager" parent="." instance=ExtResource("3_7p7tr")]
-rotationSpeedChange = 1.0
-radius = 150.0
-maxRadius = 450.0
-radiusChange = 100.0
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jynup")
