@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://drsmxwpq5c5l5"]
+[gd_scene load_steps=11 format=3 uid="uid://drsmxwpq5c5l5"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="SpriteFrames" uid="uid://cc16i8u3drovi" path="res://Animations/Player_SpriteFrames.tres" id="2_ogeu4"]
-[ext_resource type="PackedScene" path="res://Prefabs/BallManager.tscn" id="3_7p7tr"]
+[ext_resource type="PackedScene" uid="uid://q8rfeflml2nw" path="res://Prefabs/BallManager.tscn" id="3_7p7tr"]
+[ext_resource type="PackedScene" uid="uid://nb0jgiog7sb7" path="res://Prefabs/PowerUpManager.tscn" id="4_he58j"]
 [ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
 [ext_resource type="PackedScene" uid="uid://cjwcl3lhku045" path="res://Prefabs/XPbar.tscn" id="6_1d840"]
 [ext_resource type="AudioStream" uid="uid://fjo8nyartufw" path="res://Audio/roblox-death-sound-effect.mp3" id="6_rauxo"]
@@ -34,6 +35,10 @@ autoplay = "Idle"
 frame_progress = 0.197374
 
 [node name="BallManager" parent="." instance=ExtResource("3_7p7tr")]
+rotationSpeedChange = 1.0
+radius = 150.0
+maxRadius = 450.0
+radiusChange = 100.0
 
 [node name="Body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jynup")
@@ -44,6 +49,9 @@ collision_mask = 0
 
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_icb3i")
+
+[node name="PowerUpManager" parent="." node_paths=PackedStringArray("ballManager") instance=ExtResource("4_he58j")]
+ballManager = NodePath("../BallManager")
 
 [node name="Lifebar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_qcvfm")]
 offset_left = -60.0
@@ -70,6 +78,7 @@ volume_db = -20.0
 
 [connection signal="Died" from="." to="BallManager" method="OnPlayerDied"]
 [connection signal="HealthChanged" from="." to="Lifebar" method="OnPlayerHealthChanged"]
+[connection signal="LevelChanged" from="." to="PowerUpManager" method="OnPlayerLevelChanged"]
 [connection signal="MaxHealthChanged" from="." to="Lifebar" method="OnPlayerMaxHealthChanged"]
 [connection signal="XPChanged" from="." to="XPbar" method="OnPlayerXPChanged"]
 [connection signal="XPToNextLevelChanged" from="." to="XPbar" method="OnPlayerXPToNextLevelChanged"]

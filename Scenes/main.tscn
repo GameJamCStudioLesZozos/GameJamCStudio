@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://drsmxwpq5c5l5" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://cmjd3mlcvor6m" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
-[ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
-[ext_resource type="PackedScene" uid="uid://qpkhdfvy5hv8" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
+[ext_resource type="PackedScene" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
+[ext_resource type="PackedScene" uid="uid://duteqywfh05nh" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
 [ext_resource type="AudioStream" uid="uid://bqa4lu8ig8p6y" path="res://Audio/Samurai-Sake-Showdown.mp3" id="6_p6s60"]
 [ext_resource type="Script" path="res://Scripts/ShakeCamera2D.cs" id="7_64b13"]
 
