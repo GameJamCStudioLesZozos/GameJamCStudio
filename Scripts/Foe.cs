@@ -25,7 +25,9 @@ public partial class Foe : CharacterBody2D
 	[Export] public float HealthScaling = 0.5f;
 	[Export] public float SizeScaling = 1.2f;
 
-	public Node2D player;
+	[Export] public int xpDropped = 5;
+
+	public PlayerController player;
 	private Vector2 direction;
 	[Export] private Area2D hitbox;
 	
@@ -37,7 +39,7 @@ public partial class Foe : CharacterBody2D
 
 	public override void _Ready()
 	{
-		player = GetNode<Node2D>("/root/Node2D/Player");
+		player = GetNode<PlayerController>("/root/Node2D/Player");
 		direction = (player.Position - this.Position).Normalized();
 		CurrentStonksCooldown = 0.0f;
 		Health = MaxHealth;
@@ -115,6 +117,7 @@ public partial class Foe : CharacterBody2D
 		{
 			// GD.Print("I'm dead!");
 			EmitSignal(SignalName.Died);
+			player.OnFoeDied(xpDropped);
 			QueueFree();
 		}
 		else

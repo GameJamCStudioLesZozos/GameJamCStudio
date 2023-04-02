@@ -1,42 +1,84 @@
+using System;
 using Godot;
 
 public partial class PlayerController : CharacterBody2D
 {
-    [Export]
-    public int Health = 100;
+    [Export] private int health = 100;
+    public int Health
+    {
+        get => health;
+        set
+        {
+            health = value;
+            EmitSignal(SignalName.HealthChanged, health);
+        }
+    }
+    [Export] private int maxHealth = 100;
+    public int MaxHealth
+    {
+        get => maxHealth;
+        set
+        {
+            maxHealth = value;
+            EmitSignal(SignalName.MaxHealthChanged, maxHealth);
+        }
+    }
+    public bool IsDead => health <= 0;
 
-    [Export]
-    public int MaxHealth = 100;
+    [Export] private int xp = 0;
+    public int XP
+    {
+        get => xp;
+        set
+        {
+            xp = value;
+            EmitSignal(SignalName.XPChanged, xp);
+        }
+    }
+    [Export] private int level = 1;
+    public int Level
+    {
+        get => level;
+        set
+        {
+            level = value;
+            EmitSignal(SignalName.LevelChanged, xp);
+        }
+    }
+    [Export] private int xpToNextLevel = 100;
+    public int XPToNextLevel
+    {
+        get => xpToNextLevel;
+        set
+        {
+            xpToNextLevel = value;
+            EmitSignal(SignalName.XPToNextLevelChanged, xpToNextLevel);
+        }
+    }
+    [Export] private float XPToNextLevelScaling = 1.2f;
+    [Export] private float MaxHealthScaling = 1.1f;
 
-    [Export]
-    private double InvulnerabilityCooldown = 3.0;
-
-    [Export]
-    private double TakeDamageCooldown = 0.25;
-
+    [Export] private double InvulnerabilityCooldown = 3.0;
+    [Export] private double TakeDamageCooldown = 0.25;
     private double CurrentInvulnerabilityDuration = 0.0;
-
     private double CurrentTakeDamageDuration = 0.0;
 
-    [Export]
-    public int Speed { get; set; } = 400;
-
-    [Export]
-    public int HitRecoilSpeed { get; set; } = 400;
-
-    [Export]
-    private AnimatedSprite2D animComponent;
-
-    [Signal]
-    public delegate void HealthChangedEventHandler(int newValue);
-
-    [Signal]
-    public delegate void DiedEventHandler();
-
-    private bool IsDead => Health <= 0;
     private bool IsBeingHit => CurrentTakeDamageDuration > 0;
     private Vector2 HitDirection;
     private Vector2 lastNonZeroDirection;
+
+    [Export] public int Speed { get; set; } = 400;
+    [Export] public int HitRecoilSpeed { get; set; } = 400;
+
+    [Export] private AnimatedSprite2D animComponent;
+
+    [Signal] public delegate void HealthChangedEventHandler(int newHealth);
+    [Signal] public delegate void MaxHealthChangedEventHandler(int newMaxHealth);
+    [Signal] public delegate void DiedEventHandler();
+    [Signal] public delegate void XPChangedEventHandler(int newXP);
+    [Signal] public delegate void XPToNextLevelChangedEventHandler(int newXPToNextLevel);
+    [Signal] public delegate void LevelChangedEventHandler(int newLevel);
+
 
     public override void _Ready()
     {
@@ -99,6 +141,11 @@ public partial class PlayerController : CharacterBody2D
 
     public void TakeDamage(int amount, Vector2 enemyPosition)
     {
+        if (IsDead)
+        {
+            return; // omae wa mou shindeiru (nani???)
+        }
+
         if (CurrentInvulnerabilityDuration > 0.0)
         {
             return; // still invincible
@@ -109,16 +156,29 @@ public partial class PlayerController : CharacterBody2D
         HitDirection = (Position - enemyPosition).Normalized();
         PlayHit();
         
-        Health -= amount;
-        if (Health < 0)
-        {
-            Health = 0;
-        }
-        EmitSignal(SignalName.HealthChanged, Health);
+        Health = Math.Max(Health - amount, 0);
         if (Health == 0)
         {
             EmitSignal(SignalName.Died);
         }
+    }
+
+    public void OnFoeDied(int xpGained)
+    {
+        XP = Math.Min(XP + xpGained, XPToNextLevel);
+        if (XP >= XPToNextLevel)
+        {
+            LevelUp();
+        }
+    }
+
+    private void LevelUp()
+    {
+        ++Level;
+        XP = 0;
+        XPToNextLevel = (int)Math.Round(XPToNextLevel * XPToNextLevelScaling);
+        MaxHealth  = (int)Math.Round(MaxHealth * MaxHealthScaling);
+        Health = MaxHealth;
     }
 
     #region Animation
