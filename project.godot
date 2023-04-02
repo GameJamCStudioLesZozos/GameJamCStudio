@@ -11,8 +11,11 @@ config_version=5
 [application]
 
 config/name="GameJamCStudio"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/Intro.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/show_image=false
+boot_splash/image="res://Sprites/icon.png"
 config/icon="res://Sprites/icon.svg"
 
 [display]
