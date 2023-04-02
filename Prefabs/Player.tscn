@@ -19,6 +19,7 @@ height = 65.0
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animComponent")]
 collision_mask = 4
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_r4ujs")
 animComponent = NodePath("Sprite")
 

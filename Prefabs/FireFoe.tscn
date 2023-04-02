@@ -7,8 +7,3 @@
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = ExtResource("2_sueif")
-
-[connection signal="HealthChanged" from="." to="Lifebar" method="OnFoeHealthChanged"]
-[connection signal="MaxHealthChanged" from="." to="Lifebar" method="OnFoeMaxHealthChanged"]
-
-[editable path="Lifebar"]
