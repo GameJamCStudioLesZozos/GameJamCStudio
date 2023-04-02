@@ -42,11 +42,11 @@ grow_vertical = 2
 
 [node name="YouDiedText" type="RichTextLabel" parent="Control/CenterContainer"]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.835294, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/normal_font_size = 40
-text = "You died!"
+text = "YOU DIED!"
 fit_content = true
 autowrap_mode = 0
 
