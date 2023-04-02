@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://52l1iqg8ogj6"]
+[gd_scene load_steps=10 format=3 uid="uid://52l1iqg8ogj6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.cs" id="1_r4ujs"]
 [ext_resource type="PackedScene" uid="uid://c52bqmsv2ik7u" path="res://Prefabs/Ball.tscn" id="2_83xqg"]
 [ext_resource type="SpriteFrames" uid="uid://bo840ujxqrtlc" path="res://Animations/Fireball_SpriteFrames.tres" id="3_ybt8w"]
 [ext_resource type="SpriteFrames" uid="uid://byyl5r47fkhe1" path="res://Animations/Iceball_SpriteFrames.tres" id="4_8pg0y"]
+[ext_resource type="PackedScene" uid="uid://dry6axi4vajsp" path="res://Prefabs/Lifebar.tscn" id="5_qcvfm"]
 
 [sub_resource type="Gradient" id="Gradient_e6d1i"]
 
@@ -55,6 +56,16 @@ sprite_frames = ExtResource("3_ybt8w")
 autoplay = "default"
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[node name="Lifebar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_qcvfm")]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = -60.0
+offset_bottom = -60.0
+scale = Vector2(0.3, 0.3)
+player = NodePath("..")
+
+[connection signal="HealthChanged" from="." to="Lifebar" method="OnPlayerHealthChanged"]
 
 [editable path="IceBall"]
 [editable path="FireBall"]

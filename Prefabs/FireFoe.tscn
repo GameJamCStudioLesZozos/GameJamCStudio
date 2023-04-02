@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://msuewekfif1l"]
 
-[ext_resource type="PackedScene" uid="uid://dbs515agwr5ko" path="res://Prefabs/BaseFoe.tscn" id="1_jidfx"]
+[ext_resource type="PackedScene" uid="uid://82lf7rmnqpyw" path="res://Prefabs/BaseFoe.tscn" id="1_jidfx"]
 [ext_resource type="SpriteFrames" uid="uid://7ul7mti3saom" path="res://Animations/FireFoe_SpriteFrames.tres" id="2_sueif"]
 
 [node name="FireFoe" instance=ExtResource("1_jidfx")]
