@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://d21fwbitsmiue"]
 
-[ext_resource type="Texture2D" uid="uid://djrp0cixjnfrr" path="res://Sprites/grass.jpg" id="1_fvqdn"]
+[ext_resource type="Texture2D" uid="uid://c8xdb2uknbjxw" path="res://Sprites/grass.png" id="1_a034t"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(1224, 612)
+motion_mirroring = Vector2(512, 512)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_repeat = 2
 position = Vector2(640, 360)
-texture = ExtResource("1_fvqdn")
+texture = ExtResource("1_a034t")
 region_enabled = true
 region_rect = Rect2(0, 0, 1280, 720)

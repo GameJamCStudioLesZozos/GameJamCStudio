@@ -8,7 +8,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("3_vb521")]
+[node name="Terrain" parent="." instance=ExtResource("3_vb521")]
 
 [node name="FoeSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_o4mjy")]
 player = NodePath("../Player")
