@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://db7dj08fwxs7q"]
 
-[ext_resource type="PackedScene" uid="uid://82lf7rmnqpyw" path="res://Prefabs/BaseFoe.tscn" id="1_iv28n"]
+[ext_resource type="PackedScene" uid="uid://dbs515agwr5ko" path="res://Prefabs/BaseFoe.tscn" id="1_iv28n"]
 [ext_resource type="SpriteFrames" uid="uid://c1j70de28c2gj" path="res://Animations/IceFoe_SpriteFrames.tres" id="2_lr38w"]
 [ext_resource type="PackedScene" uid="uid://dcn1o3q568vr7" path="res://Prefabs/Lifebar.tscn" id="3_omsld"]
 [ext_resource type="Script" path="res://Scripts/FoeLifebar.cs" id="4_frf0e"]
 
 [node name="IceFoe" instance=ExtResource("1_iv28n")]
+motion_mode = 1
 type = 1
 
 [node name="Sprite" parent="." index="0"]
