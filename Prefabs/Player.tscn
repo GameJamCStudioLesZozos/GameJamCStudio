@@ -43,5 +43,8 @@ texture = ExtResource("4_3y34c")
 
 [node name="Camera" type="Camera2D" parent="."]
 
+[connection signal="Died" from="." to="FireBall" method="OnPlayerDied"]
+[connection signal="Died" from="." to="IceBall" method="OnPlayerDied"]
+
 [editable path="FireBall"]
 [editable path="IceBall"]

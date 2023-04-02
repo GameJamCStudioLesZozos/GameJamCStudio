@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using Godot.Collections;
-using Array = Godot.Collections.Array;
 
 public partial class BallController : RigidBody2D
 {
@@ -32,4 +30,9 @@ public partial class BallController : RigidBody2D
 			}
 		}
 	}
+
+    public void OnPlayerDied()
+    {
+        QueueFree();
+    }
 }
