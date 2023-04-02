@@ -63,6 +63,7 @@ public partial class PlayerController : CharacterBody2D
     private double CurrentInvulnerabilityDuration = 0.0;
     private double CurrentTakeDamageDuration = 0.0;
 
+    private bool IsInvincible => CurrentInvulnerabilityDuration > 0;
     private bool IsBeingHit => CurrentTakeDamageDuration > 0;
     private Vector2 HitDirection;
     private Vector2 lastNonZeroDirection;
@@ -70,7 +71,12 @@ public partial class PlayerController : CharacterBody2D
     [Export] public int Speed { get; set; } = 400;
     [Export] public int HitRecoilSpeed { get; set; } = 400;
 
+    [Export] private CanvasItem spriteCanvasItemComponent;
     [Export] private AnimatedSprite2D animComponent;
+
+    private int blinkingSign = 1;
+    private float blinkingStep = 25/255f;
+    private float alphaValue = 0;
 
     [Signal] public delegate void HealthChangedEventHandler(int newHealth);
     [Signal] public delegate void MaxHealthChangedEventHandler(int newMaxHealth);
@@ -92,10 +98,23 @@ public partial class PlayerController : CharacterBody2D
         if (IsDead)
             return;
 
-        CurrentInvulnerabilityDuration -= delta;
-        if (CurrentInvulnerabilityDuration <= 0.0)
+        if (IsInvincible)
         {
-            CurrentInvulnerabilityDuration = 0.0;
+            // make player blink
+            alphaValue += blinkingSign * blinkingStep;
+            alphaValue = Math.Clamp(alphaValue, 0, 1);
+            if (alphaValue == 0 || alphaValue == 1)
+            {
+                blinkingSign *= -1;
+            }
+            spriteCanvasItemComponent.SelfModulate = SetAlpha(spriteCanvasItemComponent.SelfModulate, alphaValue);
+
+            CurrentInvulnerabilityDuration -= delta;
+            if (CurrentInvulnerabilityDuration <= 0.0) // end of invincibility
+            {
+                CurrentInvulnerabilityDuration = 0.0;
+                spriteCanvasItemComponent.SelfModulate = SetAlpha(spriteCanvasItemComponent.SelfModulate, 1);
+            }
         }
 
         if (IsBeingHit)
@@ -144,14 +163,9 @@ public partial class PlayerController : CharacterBody2D
 
     public void TakeDamage(int amount, Vector2 enemyPosition)
     {
-        if (IsDead)
+        if (IsDead || IsInvincible)
         {
             return; // omae wa mou shindeiru (nani???)
-        }
-
-        if (CurrentInvulnerabilityDuration > 0.0)
-        {
-            return; // still invincible
         }
 
         CurrentInvulnerabilityDuration = InvulnerabilityCooldown;
@@ -183,6 +197,11 @@ public partial class PlayerController : CharacterBody2D
         XPToNextLevel = (int)Math.Round(XPToNextLevel * XPToNextLevelScaling);
         MaxHealth  = (int)Math.Round(MaxHealth * MaxHealthScaling);
         Health = MaxHealth;
+    }
+
+    private Color SetAlpha(Color c, float alpha)
+    {
+        return new Color(c.R, c.G, c.B, alpha);
     }
 
     #region Animation

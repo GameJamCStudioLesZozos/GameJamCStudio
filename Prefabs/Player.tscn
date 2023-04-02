@@ -16,11 +16,12 @@ height = 55.0
 radius = 20.0
 height = 65.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animComponent")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("spriteCanvasItemComponent", "animComponent")]
 collision_mask = 4
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_r4ujs")
+spriteCanvasItemComponent = NodePath("Sprite")
 animComponent = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
