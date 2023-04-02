@@ -16,6 +16,9 @@ public partial class PlayerController : CharacterBody2D
     [Export]
     public int Speed { get; set; } = 400;
 
+    [Export]
+    private AnimatedSprite2D animComponent;
+
     [Signal]
     public delegate void HealthChangedEventHandler(int newValue);
 
@@ -23,6 +26,7 @@ public partial class PlayerController : CharacterBody2D
     public delegate void DiedEventHandler();
 
     private bool IsDead => Health <= 0;
+    private Vector2 lastNonZeroDirection;
 
     public override void _Ready()
     {
@@ -44,6 +48,18 @@ public partial class PlayerController : CharacterBody2D
     {
         Vector2 inputDirection = Input.GetVector("Left", "Right", "Up", "Down").Normalized();
         Velocity = inputDirection * Speed;
+
+        if (inputDirection == Vector2.Zero)
+        {
+            animComponent.Play("Idle");
+        }
+        else
+        {
+            animComponent.Play("Running");
+            lastNonZeroDirection = inputDirection;
+        }
+
+        animComponent.FlipH = lastNonZeroDirection.X < 0;
     }
 
     public override void _PhysicsProcess(double delta)
