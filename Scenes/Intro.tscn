@@ -40,6 +40,20 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("2_wlqip")
 
+[node name="Title" type="RichTextLabel" parent="GUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_right = 351.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 60
+text = "ALI & BALLS"
+fit_content = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
 anchors_preset = 6
 anchor_left = 1.0
