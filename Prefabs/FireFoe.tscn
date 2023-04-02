@@ -7,3 +7,35 @@
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = ExtResource("2_sueif")
+
+[node name="Lifebar" parent="." index="4" node_paths=PackedStringArray("foe", "DamageTakenText") instance=ExtResource("3_nvvdu")]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("4_w01nl")
+foe = NodePath("..")
+DamageTakenText = NodePath("DamageTaken")
+
+[node name="LifebarProgress" parent="Lifebar" index="0"]
+self_modulate = Color(1, 0.121569, 0.517647, 1)
+offset_left = -61.0
+offset_top = -65.0
+offset_right = 335.0
+offset_bottom = -12.0
+scale = Vector2(0.2, 0.2)
+
+[node name="DamageTaken" type="Label" parent="Lifebar" index="1"]
+self_modulate = Color(0, 0, 0, 0)
+offset_left = -59.0
+offset_top = -99.0
+offset_right = 17.0
+offset_bottom = -64.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="HealthChanged" from="." to="Lifebar" method="OnFoeHealthChanged"]
+[connection signal="MaxHealthChanged" from="." to="Lifebar" method="OnFoeMaxHealthChanged"]
+
+[editable path="Lifebar"]
