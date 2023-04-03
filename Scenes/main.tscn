@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuqmjbj1cpjmj"]
+[gd_scene load_steps=9 format=3 uid="uid://cuqmjbj1cpjmj"]
 
 [ext_resource type="PackedScene" uid="uid://drsmxwpq5c5l5" path="res://Prefabs/Player.tscn" id="2_gvvgh"]
 [ext_resource type="PackedScene" uid="uid://cmjd3mlcvor6m" path="res://Prefabs/FoeSpawner.tscn" id="2_o4mjy"]
 [ext_resource type="PackedScene" uid="uid://d21fwbitsmiue" path="res://Prefabs/Terrain.tscn" id="3_vb521"]
 [ext_resource type="PackedScene" uid="uid://cek4f8ee05fuw" path="res://Prefabs/GameOverUI.tscn" id="4_d8rnf"]
+[ext_resource type="PackedScene" uid="uid://co8o8oceb8jnb" path="res://Prefabs/UpgradeMenu.tscn" id="4_ilt4n"]
 [ext_resource type="PackedScene" uid="uid://qpkhdfvy5hv8" path="res://Prefabs/PlayerInfo.tscn" id="5_2835u"]
 [ext_resource type="AudioStream" uid="uid://bqa4lu8ig8p6y" path="res://Audio/Samurai-Sake-Showdown.mp3" id="6_p6s60"]
 [ext_resource type="Script" path="res://Scripts/ShakeCamera2D.cs" id="7_64b13"]
@@ -21,6 +22,10 @@ position = Vector2(640, 360)
 Music = NodePath("../GUI/Music")
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="UpgradeMenu" parent="GUI" node_paths=PackedStringArray("ballManager") instance=ExtResource("4_ilt4n")]
+process_mode = 2
+ballManager = NodePath("../../Player")
 
 [node name="GameOverUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_d8rnf")]
 anchors_preset = 8
@@ -62,6 +67,7 @@ target = NodePath("../Player")
 
 [connection signal="Died" from="Player" to="GUI/GameOverUI" method="OnPlayerDied"]
 [connection signal="HealthChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerHealth" method="OnPlayerHealthChanged"]
+[connection signal="LevelChanged" from="Player" to="GUI/UpgradeMenu" method="OnPlayerLevelChanged"]
 [connection signal="LevelChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerLevel" method="OnPlayerLevelChanged"]
 [connection signal="MaxHealthChanged" from="Player" to="GUI/PlayerInfo/VBoxContainer/PlayerHealth" method="OnPlayerMaxHealthChanged"]
 [connection signal="PlayerHit" from="Player" to="ShakeCamera2D" method="OnPlayerHit"]

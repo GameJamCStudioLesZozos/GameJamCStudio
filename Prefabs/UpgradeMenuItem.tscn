@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://kfr2catnh3jm"]
+
+[ext_resource type="Script" path="res://Scripts/UpgradeMenuItem.cs" id="1_8lekp"]
+[ext_resource type="Texture2D" uid="uid://dloc4k4ycjisy" path="res://Sprites/UpgradeItems/ball.png" id="1_mx2aw"]
+
+[node name="UpgradeMenuItem" type="Control" node_paths=PackedStringArray("panelHover", "title", "image")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8lekp")
+panelHover = NodePath("PanelContainer/PanelHover")
+title = NodePath("PanelContainer/MarginContainer/VBoxContainer/CenterContainer/RichTextLabel")
+image = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TextureRect")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = -119.0
+offset_right = 105.5
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="PanelHover" type="Panel" parent="PanelContainer"]
+visible = false
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 30
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "{TITLE}"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_mx2aw")
+
+[connection signal="mouse_entered" from="PanelContainer" to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="PanelContainer" to="." method="OnMouseExited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer" to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer" to="." method="OnMouseExited"]

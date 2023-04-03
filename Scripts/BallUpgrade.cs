@@ -10,10 +10,12 @@ public partial class BallUpgradeGD : GodotObject
 {
     public BallUpgradeGD(BallUpgrade upgrade)
     {
-        Upgrade = upgrade;
+        _upgrade = upgrade;
     }
 
-    public BallUpgrade Upgrade { get; }
+    public BallUpgrade Get() => _upgrade;
+
+    private readonly BallUpgrade _upgrade;
 }
 
 public class BallUpgrade
