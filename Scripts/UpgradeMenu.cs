@@ -13,7 +13,6 @@ public partial class UpgradeMenu : Control,
     {
         this.Subscribe<UpgradeMenuItemSelectedEvent>();
         HideContent();
-        ClearChildren();
     }
 
     public void OnPlayerLevelChanged(int level)
@@ -34,6 +33,7 @@ public partial class UpgradeMenu : Control,
 
     private void ShowContent()
     {
+        ClearChildren();
         content.Visible = true;
         GetTree().Paused = true;
     }
