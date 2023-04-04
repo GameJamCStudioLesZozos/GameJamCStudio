@@ -1,15 +1,17 @@
+using Events;
 using Godot;
 using System.Collections.Generic;
 
-public partial class UpgradeMenu : Control
+public partial class UpgradeMenu : Control,
+    IEventHandler<UpgradeMenuItemSelectedEvent>
 {
     [Export] private CanvasItem content;
     [Export] private Node itemsParent;
     [Export] private PackedScene upgradeMenuItem;
-    [Export] private BallManager ballManager;
 
     public override void _Ready()
     {
+        this.Subscribe<UpgradeMenuItemSelectedEvent>();
         HideContent();
         ClearChildren();
     }
@@ -20,15 +22,14 @@ public partial class UpgradeMenu : Control
         GenerateRandomUpgradeMenuItems();
     }
 
-    public void OnUpgradeMenuItemClicked(BallUpgradeGD upgradeGD)
+    void IEventHandler<UpgradeMenuItemSelectedEvent>.Handle(UpgradeMenuItemSelectedEvent @event)
     {
-        BallUpgrade upgrade = upgradeGD.Get();
-        if (upgrade.Condition(ballManager))
+        var ballManager = Singletons.Get<BallManager>();
+        if (@event.Upgrade.Condition(ballManager))
         {
-            upgrade.Effect(ballManager);
+            @event.Upgrade.Effect(ballManager);
         }
         HideContent();
-        GD.Print("Hide");
     }
 
     private void ShowContent()
@@ -58,7 +59,6 @@ public partial class UpgradeMenu : Control
             }
             while (pickedUpgrades.Contains(upgrade));
             item.SetUpgrade(upgrade);
-            item.Clicked += OnUpgradeMenuItemClicked;
         }
     }
 

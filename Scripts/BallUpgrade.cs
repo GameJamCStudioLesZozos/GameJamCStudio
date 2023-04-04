@@ -1,23 +1,6 @@
 using Godot;
 using System;
 
-/// <summary>
-/// This is because Godot won't recognize the class for things like Signals,
-/// if the class doesn't inherit from GodotObject.
-/// So we wrap it to be able to still use the underlying class as freely as possible.
-/// </summary>
-public partial class BallUpgradeGD : GodotObject
-{
-    public BallUpgradeGD(BallUpgrade upgrade)
-    {
-        _upgrade = upgrade;
-    }
-
-    public BallUpgrade Get() => _upgrade;
-
-    private readonly BallUpgrade _upgrade;
-}
-
 public class BallUpgrade : IEquatable<BallUpgrade>
 {
     private const string ImagesRoot = "res://Sprites/UpgradeItems";

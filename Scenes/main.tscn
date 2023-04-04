@@ -23,9 +23,8 @@ Music = NodePath("../GUI/Music")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="UpgradeMenu" parent="GUI" node_paths=PackedStringArray("ballManager") instance=ExtResource("4_ilt4n")]
+[node name="UpgradeMenu" parent="GUI" instance=ExtResource("4_ilt4n")]
 process_mode = 2
-ballManager = NodePath("../../Player")
 
 [node name="GameOverUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_d8rnf")]
 anchors_preset = 8

@@ -1,27 +1,26 @@
 using Godot;
+using Events;
+
 public partial class UpgradeMenuItem : Control
 {
     [Export] private CanvasItem panelHover;
     [Export] private RichTextLabel title;
     [Export] private TextureRect image;
 
-    [Signal] public delegate void ClickedEventHandler(BallUpgradeGD upgradeGD);
-
     private bool _isMouseOver;
-    private BallUpgradeGD _upgrade;
+    private BallUpgrade _upgrade;
 
 	public override void _Process(double delta)
 	{
         if (_isMouseOver && Input.IsActionJustPressed("Click"))
         {
-            EmitSignal(SignalName.Clicked, _upgrade);
-            GD.Print($"Clicked on {_upgrade.Get().Description}");
+            this.Publish(new UpgradeMenuItemSelectedEvent(_upgrade));
         }
 	}
 
     public void SetUpgrade(BallUpgrade upgrade)
     {
-        _upgrade = new BallUpgradeGD(upgrade);
+        _upgrade = upgrade;
         title.Text = upgrade.Description;
         image.Texture = upgrade.Image;
     }

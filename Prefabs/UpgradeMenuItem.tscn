@@ -77,5 +77,3 @@ texture = ExtResource("1_mx2aw")
 
 [connection signal="mouse_entered" from="PanelContainer" to="." method="OnMouseEntered"]
 [connection signal="mouse_exited" from="PanelContainer" to="." method="OnMouseExited"]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer" to="." method="OnMouseEntered"]
-[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer" to="." method="OnMouseExited"]
