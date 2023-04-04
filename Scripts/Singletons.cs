@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public static class Singletons
 {
-    private static readonly Dictionary<Type, object> _instances = new();
-
     public static void Register<T>(T instance)
     {
         if (_instances.ContainsKey(typeof(T)))
@@ -20,4 +18,6 @@ public static class Singletons
 
         return (T)instance;
     }
+
+    private static readonly Dictionary<Type, object> _instances = new();
 }
