@@ -111,16 +111,7 @@ public partial class BallManager : Node2D
 
     internal void AddTwoMoreBalls()
     {
-        int newBallCount = balls.Count + 2;
-		UnspawnAllBalls();
-        for (int i = 0; i < newBallCount / 2; i++)
-        {
-            AddBall(IceBall);
-        }
-        for (int i = newBallCount / 2; i < newBallCount; i++)
-        {
-            AddBall(FireBall);
-        }
+        SetBallCount(balls.Count + 2);
     }
 
     internal bool IsRadiusMax()
@@ -150,19 +141,20 @@ public partial class BallManager : Node2D
 
     internal void RemoveTwoBalls()
     {
-        int prevBallCount = balls.Count;
+        SetBallCount(balls.Count - 2);
+    }
+
+    internal void SetBallCount(int count)
+    {
 		UnspawnAllBalls();
-		for (int i = 0; i < prevBallCount - 2; ++i)
-		{
-			if (i % 2 == 0)
-			{
-				AddBall(IceBall);
-			}
-			else
-			{
-				AddBall(FireBall);
-			}
-		}
+        for (int i = 0; i < count / 2; i++)
+        {
+            AddBall(IceBall);
+        }
+        for (int i = count / 2; i < count; i++)
+        {
+            AddBall(FireBall);
+        }
     }
 
     internal bool IsNumberOfBallsMin()
