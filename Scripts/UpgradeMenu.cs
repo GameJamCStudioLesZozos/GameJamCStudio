@@ -46,7 +46,7 @@ public partial class UpgradeMenu : Control
     private void GenerateRandomUpgradeMenuItems()
     {
         const int nbUpgrades = 3;
-        var pickedUpgrades = new List<BallUpgrade>();
+        HashSet<BallUpgrade> pickedUpgrades = new();
         for (int i = 0; i < nbUpgrades; i++)
         {
             var item = upgradeMenuItem.Instantiate<UpgradeMenuItem>();

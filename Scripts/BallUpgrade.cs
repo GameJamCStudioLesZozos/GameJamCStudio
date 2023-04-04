@@ -18,7 +18,7 @@ public partial class BallUpgradeGD : GodotObject
     private readonly BallUpgrade _upgrade;
 }
 
-public class BallUpgrade
+public class BallUpgrade : IEquatable<BallUpgrade>
 {
     private const string ImagesRoot = "res://Sprites/UpgradeItems";
 
@@ -48,6 +48,11 @@ public class BallUpgrade
         }
     }
     private CompressedTexture2D _image = null;
+
+    public bool Equals(BallUpgrade other)
+    {
+        return Description == other.Description;
+    }
 }
 
 public static class BallUpgrades
