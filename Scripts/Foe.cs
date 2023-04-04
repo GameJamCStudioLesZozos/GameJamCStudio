@@ -31,7 +31,7 @@ public partial class Foe : CharacterBody2D
 	private Vector2 direction;
 	[Export] private Area2D hitbox;
 	
-	[Export] public Type type;
+	[Export] public BallType type;
 
 	[Signal] public delegate void HealthChangedEventHandler(int newHealth);
 	[Signal] public delegate void MaxHealthChangedEventHandler(int newMaxHealth);
@@ -46,7 +46,7 @@ public partial class Foe : CharacterBody2D
 		Speed = InitialSpeed;
 	}
 
-	void Hit(Type typeOfBall, int ballPower)
+	void Hit(BallType typeOfBall, int ballPower)
 	{
 		// GD.Print($"Got hit by ball of type {typeOfBall} and power {ballPower}!");
 		if (IsDead)

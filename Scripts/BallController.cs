@@ -5,7 +5,7 @@ public partial class BallController : Node2D
 {
 	[Export] public double angle = 0;
 	[Export] public float radius = 100;
-	[Export] public Type type;
+	[Export] public BallType type;
 	[Export] public int damage = 10;
 	[Export] private Area2D hitbox;
 
