@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dloc4k4ycjisy" path="res://Sprites/UpgradeItems/ball.png" id="1_mx2aw"]
 
 [node name="UpgradeMenuItem" type="Control" node_paths=PackedStringArray("panelHover", "title", "image")]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,8 +56,8 @@ mouse_filter = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 32
-text = "{TITLE}"
+theme_override_font_sizes/normal_font_size = 18
+text = "{My title long name}"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
