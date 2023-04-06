@@ -21,6 +21,7 @@ collision_mask = 4
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_r4ujs")
+xpToNextLevel = 50
 DamageSound = NodePath("DamageSound")
 DeathSound = NodePath("DeathSound")
 spriteCanvasItemComponent = NodePath("Sprite")
