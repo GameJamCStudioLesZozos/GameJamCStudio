@@ -13,7 +13,6 @@ grow_vertical = 2
 script = ExtResource("1_xwoqg")
 content = NodePath("PanelContainer")
 itemsParent = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
-upgradeMenuItem = ExtResource("1_puxq8")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

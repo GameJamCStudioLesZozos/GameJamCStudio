@@ -1,13 +1,13 @@
 using Events;
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class UpgradeMenu : Control,
     IEventHandler<UpgradeMenuItemSelectedEvent>
 {
     [Export] private CanvasItem content;
     [Export] private Node itemsParent;
-    [Export] private PackedScene upgradeMenuItem;
 
     public override void _Ready()
     {
@@ -33,7 +33,6 @@ public partial class UpgradeMenu : Control,
 
     private void ShowContent()
     {
-        ClearChildren();
         content.Visible = true;
         GetTree().Paused = true;
     }
@@ -46,27 +45,17 @@ public partial class UpgradeMenu : Control,
 
     private void GenerateRandomUpgradeMenuItems()
     {
-        const int nbUpgrades = 3;
+        UpgradeMenuItem[] menuItems = itemsParent.GetChildren().OfType<UpgradeMenuItem>().ToArray();
         HashSet<BallUpgrade> pickedUpgrades = new();
-        for (int i = 0; i < nbUpgrades; i++)
+        foreach (UpgradeMenuItem menuItem in menuItems)
         {
-            var item = upgradeMenuItem.Instantiate<UpgradeMenuItem>();
-            itemsParent.AddChild(item);
             BallUpgrade upgrade = null;
             do
             {
                 upgrade = BallUpgrades.PickRandomUpgrade();
             }
             while (pickedUpgrades.Contains(upgrade));
-            item.SetUpgrade(upgrade);
-        }
-    }
-
-    private void ClearChildren()
-    {
-        foreach (Node child in itemsParent.GetChildren())
-        {
-            child.QueueFree();
+            menuItem.SetUpgrade(upgrade);
         }
     }
 }
